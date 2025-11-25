@@ -9,7 +9,8 @@ function Home() {
   const [city, setCity] = useState('');
   const navigate = useNavigate();
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
     if (!city) return;
 
     axios.get('http://api.openweathermap.org/geo/1.0/direct', {
@@ -35,17 +36,19 @@ function Home() {
 
   return (
     <div className="container text-center mt-5 bg-warning">
-      <h1 className="mb-4">🌦 Weather App</h1>
-      <div className="input-group mb-3 w-50 mx-auto">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Enter city name"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-        <button className="btn btn-primary" onClick={handleSearch}>Search</button>
-      </div>
+        <h1 className="mb-4">🌦 Weather App</h1>
+            <form onSubmit={handleSearch}>
+                  <div className="input-group mb-3 w-50 mx-auto">
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter city name"
+                          value={city}
+                          onChange={(e) => setCity(e.target.value)}
+                        />
+                    <button type='submit' className="btn btn-primary" >Search</button>
+                  </div>
+            </form>
     </div>
   );
 }

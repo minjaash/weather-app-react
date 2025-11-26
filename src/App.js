@@ -13,7 +13,7 @@ function Home() {
     e.preventDefault();
     if (!city) return;
 
-    axios.get('http://api.openweathermap.org/geo/1.0/direct', {
+    axios.get('https://api.openweathermap.org/geo/1.0/direct', {
       params: {
         q: city,
         limit: 1,
